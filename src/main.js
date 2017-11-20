@@ -3,11 +3,13 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import VueSocketio from 'vue-socket.io';
 
 import App from './App';
 import router from './router';
 
 Vue.use(VueAxios, axios);
+Vue.use(VueSocketio, 'http://localhost:9000');
 
 Vue.config.productionTip = false;
 
