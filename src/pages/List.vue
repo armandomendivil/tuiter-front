@@ -1,18 +1,20 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="card margin-card">
+      <div class="card margin-card" v-for="post in posts">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{post.title}}
+          </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
         <div class="card-content">
           <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-content">
-          <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+            {{post.content}}
           </div>
         </div>
       </div>
@@ -23,6 +25,16 @@
 <script>
   export default {
     name: 'Index',
+    data() {
+      return {
+        posts: [],
+      };
+    },
+    created() {
+      this.$http.get('http://localhost:9000/posts').then((response) => {
+        this.posts = response.data.posts;
+      });
+    },
   };
 </script>
 
