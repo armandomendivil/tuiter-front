@@ -39,11 +39,9 @@
         this.posts = response.data.posts;
       });
     },
-    sockets:{
-      connect: function(){
-        console.log('socket connected');
-      },
-      post: function(val){
+    sockets: {
+      connect() {},
+      post(val) {
         this.posts.unshift({
           title: 'ANONIMO',
           content: val,
@@ -52,7 +50,6 @@
     },
     methods: {
       addPost() {
-
         this.$socket.emit('post', this.postText);
         this.postText = '';
       },
